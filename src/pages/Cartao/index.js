@@ -6,15 +6,22 @@ import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
 import Typography from '@material-ui/core/Typography'
+import Skeleton from '@material-ui/lab/Skeleton'
 import IconButton from '@material-ui/core/IconButton'
 import ShareIcon from '@material-ui/icons/Share'
 
 const useStyles = makeStyles(() => ({
+  skeleton: {
+    zIndex: 0,
+    position: 'absolute'
+  },
   cartao: {
-    maxWidth: '100%',
+    width: '100%',
+    zIndex: 1,
+    position: 'absolute'
   },
   media: {
-    height: 500
+    height: 500,
   },
  
 }))
@@ -23,6 +30,8 @@ export default function Cartao() {
   const classes = useStyles();
   
   return (
+    <>
+    <Skeleton variant="rect" width='100%' height={500} animation="wave" className={classes.skeleton} />
     <Card className={classes.cartao}>
       <CardMedia
         className={classes.media}
@@ -40,5 +49,6 @@ export default function Cartao() {
         </IconButton>     
       </CardActions>
     </Card>
+    </>
   )
 }

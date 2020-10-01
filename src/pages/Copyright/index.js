@@ -10,7 +10,7 @@ return(
   <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://fatecitu.edu.br/">
-        Fatec Itu
+        Empresa Delta
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

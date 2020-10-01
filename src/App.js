@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { createMuiTheme, responsiveFontSizes, MuiThemeProvider }
   from '@material-ui/core'
 /* cores */
@@ -15,7 +15,7 @@ import Rotas from './rotas'
 
 function App() {
 
-  const temaDark = false
+  const temaDark = true
   const tipoPaleta = temaDark ? 'dark' : 'light'
   const corPrimaria = temaDark ? orange[500] : blue[500]
   const corSecundaria = temaDark ? deepOrange[900] : lightBlue[500]
