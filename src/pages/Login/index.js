@@ -85,9 +85,11 @@ export default function Login() {
   const validaLogin = e => {
     e.preventDefault();
     if (email === process.env.REACT_APP_USER && senha === process.env.REACT_APP_PASSWORD) {
-      setError(false);
-      setHelperText("Login OK! Aguarde...");
-      history.push("/menu");
+      setError(false)
+      setHelperText("Login OK! Aguarde...")
+      //btoa converte a string para Base64
+      localStorage.setItem("logado", btoa(email))
+      history.push("/menu")
     } else {
       setError(true);
       setHelperText("O usuário ou a senha informados são inválidos!");
