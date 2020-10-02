@@ -1,15 +1,18 @@
 // cSpell:Ignore Cabecalho, secoes, servicos
 import React from 'react';
+import { useHistory } from "react-router-dom"
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import LockedOutlinedIcon from '@material-ui/icons/LockOutlined'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+
 
 const useStyles = makeStyles((theme) => ({
   toolbarTitle: {
@@ -26,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Cabecalho = (params) => {
   const classes = useStyles();
+  const history = useHistory() //redirecionar a página
   const secoes = [
     { titulo: 'Produtos', url: '/produtos' },
     { titulo: 'Serviços', url: '/servicos' },
@@ -50,8 +54,8 @@ const Cabecalho = (params) => {
         >
           {titulo}
         </Typography>
-        
-        <Button variant="contained"
+        {localStorage.getItem("logado") !== btoa(process.env.REACT_APP_USER)
+        ? <Button variant="contained"
                 startIcon={<LockedOutlinedIcon/>}
                 color="secondary" 
                 size="small"
@@ -59,11 +63,24 @@ const Cabecalho = (params) => {
                 >
           Login
         </Button>
-        
+        :
+        <Button variant="contained"
+                startIcon={<ExitToAppIcon/>}
+                color="secondary" 
+                size="small"
+                onClick={() => {
+                  localStorage.removeItem("logado")
+                  history.push("/login")
+                }}
+                >
+          Logout
+        </Button>
+        }
         
       </Toolbar>
       </AppBar>
       {/* dense indica ajuste no espaço vertical */}
+      {
       <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
         {secoes.map((section) => (
           <Link
@@ -78,6 +95,7 @@ const Cabecalho = (params) => {
           </Link>
         ))}
       </Toolbar>
+      }
     </React.Fragment>
   );
 }

@@ -179,3 +179,10 @@ export default function Login() {
     </Container>
   );
 }
+
+/*
+// Mesmo em browsers modernos, há caracteres que podem fazer quebrar a função nativa btoa() 
+function utf8_to_b64(str) {
+    return window.btoa(unescape(encodeURIComponent(str)));
+}
+*/
