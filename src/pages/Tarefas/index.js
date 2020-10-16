@@ -1,5 +1,6 @@
 //cSpell:Ignore descricao
 import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles"
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -21,20 +22,33 @@ import DeleteIcon from '@material-ui/icons/DeleteForeverTwoTone'
 import EditIcon from '@material-ui/icons/EditTwoTone'
 import SaveIcon from '@material-ui/icons/Save'
 
-
+const useStyles = makeStyles(theme => ({
+    select:{
+        marginBottom: theme.spacing(2)
+    },
+    botao: {
+        marginTop: theme.spacing(2)
+    }
+  }))
+    
 
 
 export default function Tarefas() {
+    const classes = useStyles()
     const [tarefas, setTarefas] = useState([])
     const valorInicial = { id: '', tipo: '', descricao: '', dataFim: '' }
     const [tarefa, setTarefa] = useState(valorInicial)
     const [editando, setEditando] = useState(false)
+    const hoje = new Date().toISOString().slice(0,10)
 
     useEffect(() => {
         setTarefas(JSON.parse(localStorage.getItem("tarefas")) || [])
     }, []);
 
     useEffect(() => {
+        function salvaDados() {
+            localStorage.setItem("tarefas", JSON.stringify(tarefas))
+        }
         salvaDados()
     }, [tarefas]);
 
@@ -63,8 +77,10 @@ export default function Tarefas() {
         setEditando(false)
     }
 
-    function salvaDados() {
-        localStorage.setItem("tarefas", JSON.stringify(tarefas))
+  
+
+    function converteData(data){
+        return new Date(data).toLocaleDateString('pt-BR',{timeZone: 'UTC'})
     }
 
     return (
@@ -104,6 +120,7 @@ export default function Tarefas() {
                         <FormControl fullWidth={true}>
                             <InputLabel id="tipo">Tipo da Tarefa</InputLabel>
                             <Select
+                                className={classes.select}
                                 labelId="tipo"
                                 id="tipo"
                                 value={tarefa.tipo}
@@ -126,6 +143,7 @@ export default function Tarefas() {
                             type="date"
                             value={tarefa.dataFim}
                             onChange={mudaAtributo}
+                            inputProps={{ min: hoje }}
                             InputLabelProps={{
                                 shrink: true,
                             }}
@@ -134,6 +152,7 @@ export default function Tarefas() {
                             type="submit"
                             variant="contained"
                             color="primary"
+                            className={classes.botao}
                         >
                             <SaveIcon /> Salvar
           </Button>
@@ -157,7 +176,7 @@ export default function Tarefas() {
                                         <TableCell>{t.id}</TableCell>
                                         <TableCell>{t.tipo}</TableCell>
                                         <TableCell>{t.descricao}</TableCell>
-                                        <TableCell align="right">{t.dataFim}</TableCell>
+                                        <TableCell align="right">{converteData(t.dataFim)}</TableCell>
                                         <TableCell>
                                             <Button startIcon={<DeleteIcon />}
                                                 onClick={() => apagaRegistro(t.id)}
@@ -171,7 +190,11 @@ export default function Tarefas() {
                                         </TableCell>
                                     </TableRow>
                                 ))}
-
+                                {tarefas.length === 0 &&
+                                <Typography 
+                                component="h3"
+                            align="center">Não existe ainda nenhuma tarefa cadastrada!</Typography>
+                                            }
                             </TableBody>
                         </Table>
                     </TableContainer>
