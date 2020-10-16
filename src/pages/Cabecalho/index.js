@@ -34,11 +34,11 @@ const Cabecalho = (params) => {
   const classes = useStyles();
   const history = useHistory() //redirecionar a página
   const secoes = [
-    { titulo: 'Produtos', url: '/#/produtos' },
-    { titulo: 'Serviços', url: '/#/servicos' },
-    { titulo: 'SAC', url: '/#/sac' },
-    { titulo: 'FAQ', url: '/#/faq' },
-    { titulo: 'Área Reservada', url: '/#/login' }
+    { titulo: 'Produtos', url: '#/produtos' },
+    { titulo: 'Serviços', url: '#/servicos' },
+    { titulo: 'SAC', url: '#/sac' },
+    { titulo: 'FAQ', url: '#/faq' },
+    { titulo: 'Área Reservada', url: '#/login' }
   ]
 
   const titulo = 'Empresa Delta'
@@ -62,7 +62,7 @@ const Cabecalho = (params) => {
                 startIcon={<LockedOutlinedIcon/>}
                 color="secondary" 
                 size="small"
-                href="/#/login"
+                href="#/login"
                 >
           Login
         </Button>
@@ -73,7 +73,7 @@ const Cabecalho = (params) => {
                 size="small"
                 onClick={() => {
                   localStorage.removeItem("logado")
-                  history.push("/#/login")
+                  history.push("#/login")
                 }}
                 >
           Logout
