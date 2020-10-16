@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
-    },
+    }
 }));
 
 export default function SimpleTabs() {
@@ -69,7 +69,7 @@ export default function SimpleTabs() {
     return (
         <div className={classes.root}>
             <Cabecalho />
-            <AppBar position="static">
+            <AppBar position="static" color="secondary">
                 <Tabs value={value} onChange={handleChange} centered aria-label="Opções do Menu">
                     <Tab label="Tarefas" icon={<LocalOfferIcon />} {...a11yProps(0)} />
                     <Tab label="Usuários" icon={<PersonPinIcon />} {...a11yProps(1)} />
@@ -79,16 +79,16 @@ export default function SimpleTabs() {
             </AppBar>
             <TabPanel value={value} index={0}>
                 <Tarefas />
-      </TabPanel>
+            </TabPanel>
             <TabPanel value={value} index={1}>
-                
-      </TabPanel>
+                Usuários
+            </TabPanel>
             <TabPanel value={value} index={2}>
-                
-      </TabPanel>
+                Clientes
+            </TabPanel>
             <TabPanel value={value} index={3}>
-                
-      </TabPanel>
+                Ajuda
+            </TabPanel>
         </div>
     );
 }
