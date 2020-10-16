@@ -9,7 +9,7 @@ import RotasPrivadas from './rotasPrivadas'
 
 export default function Rotas(){
   return(
-<BrowserRouter>
+<BrowserRouter basename={process.env.PUBLIC_URL}>
   <Switch>
     <Route exact path="/" component={Inicio} />
     <Route exact path="/login" component={Login} />
