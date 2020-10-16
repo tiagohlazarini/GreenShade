@@ -11,11 +11,13 @@ import Switch from "@material-ui/core/Switch"
 import Link from "@material-ui/core/Link"
 import Grid from "@material-ui/core/Grid"
 import Box from "@material-ui/core/Box"
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Paper from "@material-ui/core/Paper"
+
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
+import HomeIcon from "@material-ui/icons/Home"
 
 /*
 Fonte do código:
@@ -37,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1)
   },
-  submit: {
+  ultimoBotao: {
     margin: theme.spacing(3, 0, 2)
   }
 }))
@@ -153,9 +155,19 @@ export default function Login() {
             variant="contained"
             color="primary"
             disabled={botaoDesabilitado}
-            className={classes.submit}
+            
           >
             <LockOutlinedIcon /> Acessar
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="outlined"
+            color="primary"
+            href="/"
+            className={classes.ultimoBotao}
+          >
+            <HomeIcon /> Voltar ao Início
           </Button>
           <Grid container>
             <Grid item xs>

@@ -19,11 +19,14 @@ const useStyles = makeStyles((theme) => ({
     flex: 1     
   },
   toolbarSecondary: {
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    backgroundColor: theme.palette.secondary.main
+   
   },
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
+    color: '#FFFFFF'
   },
 }));
 
@@ -80,7 +83,7 @@ const Cabecalho = (params) => {
       </Toolbar>
       </AppBar>
       {/* dense indica ajuste no espaço vertical */}
-      {
+      {localStorage.getItem("logado") !== btoa(process.env.REACT_APP_USER) &&
       <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
         {secoes.map((section) => (
           <Link
