@@ -59,6 +59,7 @@ export default function Tarefas() {
     const { name, value } = event.target;
     setTarefa({ ...tarefa, [name]: value });
   };
+
   const apagaRegistro = (id) => {
     let index = tarefas.map((tarefa) => tarefa.id).indexOf(id);
     if (index > -1) {
@@ -115,9 +116,8 @@ export default function Tarefas() {
               margin="normal"
               required
               fullWidth
-              type="number"
               id="tamanho"
-              label="Tamanho do modelo"
+              label="Tamanho"
               name="tamanho"
               value={tarefa.tamanho}
               disabled={editando}
@@ -135,7 +135,7 @@ export default function Tarefas() {
               onChange={mudaAtributo}
             />
             <FormControl fullWidth={true}>
-              <InputLabel id="tipo">Tipo da roupa</InputLabel>
+              <InputLabel id="tipo">Tipo</InputLabel>
               <Select
                 className={classes.select}
                 labelId="tipo"
@@ -144,7 +144,7 @@ export default function Tarefas() {
                 required
                 onChange={(e) => setTarefa({ ...tarefa, tipo: e.target.value })}
               >
-                <MenuItem value="Profissional">Profissional</MenuItem>
+                <MenuItem value="Moda">Moda</MenuItem>
                 <MenuItem value="Casual">Casual</MenuItem>
               </Select>
             </FormControl>
@@ -176,7 +176,7 @@ export default function Tarefas() {
         </Grid>
         <Grid item xs={12} md={6}>
           <TableContainer component={Paper}>
-            <Table aria-label="Relação de Tarefas   ">
+            <Table aria-label="Relação das compras   ">
               <TableHead>
                 <TableRow>
                   <TableCell>Código</TableCell>

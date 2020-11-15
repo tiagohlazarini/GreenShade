@@ -8,8 +8,6 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import HelpIcon from "@material-ui/icons/Help";
 import AccessibilityIcon from "@material-ui/icons/Accessibility";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 
@@ -75,27 +73,19 @@ export default function SimpleTabs() {
           centered
           aria-label="Opções do Menu"
         >
-          <Tab label="Tarefas" icon={<LocalOfferIcon />} {...a11yProps(0)} />
-          <Tab label="Usuários" icon={<PersonPinIcon />} {...a11yProps(1)} />
+          <Tab label="Roupas" icon={<LocalOfferIcon />} {...a11yProps(0)} />
           <Tab
             label="Clientes"
             icon={<AccessibilityIcon />}
             {...a11yProps(2)}
           />
-          <Tab label="Ajuda" icon={<HelpIcon />} {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <Tarefas />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Usuários
-      </TabPanel>
-      <TabPanel value={value} index={2}>
         Clientes
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Ajuda
       </TabPanel>
     </div>
   );

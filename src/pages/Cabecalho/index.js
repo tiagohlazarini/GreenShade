@@ -9,15 +9,17 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 
-import ApartmentIcon from "@material-ui/icons/Apartment";
+import StoreIcon from "@material-ui/icons/Store";
 import LockedOutlinedIcon from "@material-ui/icons/LockOutlined";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   toolbarTitle: {
     flex: 1,
     fontSize: 30,
-    fontWeight: 900,
+    //fontWeight: 700,
+    fontFamily: "Lobster",
   },
   toolbarSecondary: {
     justifyContent: "space-between",
@@ -42,12 +44,13 @@ const Cabecalho = (params) => {
   ];
 
   const titulo = "GREEN SHADE";
+  
 
   return (
     <React.Fragment>
       <AppBar position="relative">
         <Toolbar>
-          <ApartmentIcon />
+          <StoreIcon />
           <Typography
             component="h1"
             color="inherit"
